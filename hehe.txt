@@ -1,0 +1,19 @@
+ HoverWidget(
+                            hoverChild: AnimatedPadding(
+                              padding: EdgeInsets.only(left: 100),
+                              duration: Duration(seconds: 1),
+                              child: Container(
+                                color: Colors.white,
+                                child: const Center(child: Text('Tap me')),
+                              ),
+                            ),
+                            onHover: (PointerEnterEvent event) {
+                              setState(() {
+                                selected = !selected;
+                              });
+                            },
+                            child: Container(
+                              color: Colors.blue,
+                              child: const Center(child: Text('Tap me')),
+                            ),
+                          ),

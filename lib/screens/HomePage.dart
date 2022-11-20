@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, sized_box_for_whitespace
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hovering/hovering.dart';
 import 'package:kerembas/config/themeColor.dart';
-import 'package:kerembas/widgets/page1.dart';
-import 'package:kerembas/widgets/page2.dart';
-import 'package:kerembas/widgets/page3.dart';
-import 'package:opscroll_web/opscroll_web.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -14,39 +13,177 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-final PageController _pageController = PageController();
-
-double? page = 0.0;
-int pages = 0;
-
 class _HomePageState extends State<HomePage> {
+  double padValue1 = 0.0;
+  double padValue2 = 0.0;
+  double padValue3 = 0.0;
+
+  void _updatePadding1(double value) {
+    setState(() {
+      padValue1 = value;
+    });
+  }
+
+  void _updatePadding2(double value) {
+    setState(() {
+      padValue2 = value;
+    });
+  }
+
+  void _updatePadding3(double value) {
+    setState(() {
+      padValue3 = value;
+    });
+  }
+
+  bool selected1 = false;
+  bool selected2 = false;
+  bool selected3 = false;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    double textsize = MediaQuery.of(context).size.height / 7;
     return Scaffold(
-      body: OpscrollWeb(
-        floatingButtonSplashColor: Colors.black,
-        onTapGesture: () {
-          setState(() {
-            page = _pageController.page;
-            pages = page!.toInt();
-          });
-        },
-        floatingButtonBackgroundColor: color4,
-        dropColor: color4,
-        isFloatingButtonActive: true,
-        isTouchScrollingActive: false,
-        pageController: _pageController,
-        scrollingAnimationOptions: ScrollingAnimationOptions.Circle,
-        scrollSpeed: const Duration(
-          milliseconds: 600,
+      body: Container(
+        height: height,
+        width: width,
+        color: Colors.black,
+        child: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: textsize * 2),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedPadding(
+                    child: MouseRegion(
+                      onEnter: (event) {
+                        setState(() {
+                          _updatePadding1(padValue1 == 0.0 ? 50.0 : 0.0);
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          _updatePadding1(padValue1 == 50 ? 0.0 : 50.0);
+                        });
+                      },
+                      child: HoverWidget(
+                        hoverChild: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, "/about");
+                          },
+                          child: Text(
+                            "About",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.anton(
+                                fontSize: textsize, color: Colors.white),
+                          ),
+                        ),
+                        onHover: (PointerEnterEvent event) {
+                          setState(() {
+                            selected1 = !selected1;
+                          });
+                        },
+                        child: Text(
+                          "Hello.",
+                          textAlign: TextAlign.start,
+                          style: GoogleFonts.anton(
+                              fontSize: textsize, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(left: padValue1),
+                    duration: Duration(
+                      milliseconds: 300,
+                    ),
+                  ),
+                  AnimatedPadding(
+                    child: MouseRegion(
+                      onEnter: (event) {
+                        setState(() {
+                          _updatePadding2(padValue2 == 0.0 ? 50.0 : 0.0);
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          _updatePadding2(padValue2 == 50 ? 0.0 : 50.0);
+                        });
+                      },
+                      child: HoverWidget(
+                        hoverChild: InkWell(
+                          onTap: () {},
+                          child: Text(
+                            "Work",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.anton(
+                                fontSize: textsize, color: red),
+                          ),
+                        ),
+                        onHover: (PointerEnterEvent event) {
+                          setState(() {
+                            selected2 = !selected2;
+                          });
+                        },
+                        child: Text(
+                          "I am",
+                          textAlign: TextAlign.start,
+                          style:
+                              GoogleFonts.anton(fontSize: textsize, color: red),
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(left: padValue2),
+                    duration: Duration(
+                      milliseconds: 300,
+                    ),
+                  ),
+                  AnimatedPadding(
+                    child: MouseRegion(
+                      onEnter: (event) {
+                        setState(() {
+                          _updatePadding3(padValue3 == 0.0 ? 50.0 : 0.0);
+                        });
+                      },
+                      onExit: (event) {
+                        setState(() {
+                          _updatePadding3(padValue3 == 50 ? 0.0 : 50.0);
+                        });
+                      },
+                      child: HoverWidget(
+                        hoverChild: InkWell(
+                          onTap: () {},
+                          child: Text(
+                            "Contact",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.anton(
+                                fontSize: textsize, color: red),
+                          ),
+                        ),
+                        onHover: (PointerEnterEvent event) {
+                          setState(() {
+                            selected2 = !selected2;
+                          });
+                        },
+                        child: Text(
+                          "Kerem",
+                          textAlign: TextAlign.start,
+                          style:
+                              GoogleFonts.anton(fontSize: textsize, color: red),
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(left: padValue3),
+                    duration: Duration(
+                      milliseconds: 300,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-        onePageChildren: [
-          Page1(pages: pages),
-          Page2(),
-          Page3(),
-        ],
       ),
     );
   }

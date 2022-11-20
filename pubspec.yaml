@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   opscroll_web: ^0.3.2
   confetti: ^0.7.0
+  hovering: ^1.0.4
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:

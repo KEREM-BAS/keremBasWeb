@@ -1,19 +1,19 @@
- HoverWidget(
-                            hoverChild: AnimatedPadding(
-                              padding: EdgeInsets.only(left: 100),
-                              duration: Duration(seconds: 1),
-                              child: Container(
-                                color: Colors.white,
-                                child: const Center(child: Text('Tap me')),
-                              ),
-                            ),
-                            onHover: (PointerEnterEvent event) {
-                              setState(() {
-                                selected = !selected;
-                              });
-                            },
-                            child: Container(
-                              color: Colors.blue,
-                              child: const Center(child: Text('Tap me')),
-                            ),
-                          ),
+SizedBox(
+                height: height,
+                width: width,
+                child: MouseRegion(
+                  onHover: (event) {
+                    setState(() {
+                      x = event.position.dx;
+                      y = event.position.dy;
+                    });
+                  },
+                  child: Positioned(
+                      left: x,
+                      top: y,
+                      child: const Text(
+                        "data",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                ),
+              ),

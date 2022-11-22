@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:kerembas/config/themeColor.dart';
 import 'package:lottie/lottie.dart';
 
 class ErrorPage extends StatefulWidget {
@@ -18,7 +22,7 @@ class _ErrorPageState extends State<ErrorPage> {
   void initState() {
     super.initState();
     _controllerCenter =
-        ConfettiController(duration: const Duration(seconds: 2));
+        ConfettiController(duration: const Duration(seconds: 1));
   }
 
   @override
@@ -46,6 +50,86 @@ class _ErrorPageState extends State<ErrorPage> {
               Center(
                 child: Lottie.asset(
                   "assets/404.json",
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                  ConfettiWidget(
+                    minBlastForce: 1,
+                    confettiController: _controllerCenter,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    colors: const [
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.white,
+                    ],
+                  ),
+                ],
+              ),
+              Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.restorablePopAndPushNamed(context, "/");
+                  },
+                  child: Text(
+                    "Back to home",
+                    style: GoogleFonts.anton(
+                      color: red,
+                      fontSize: 45,
+                    ),
+                  ),
                 ),
               ),
             ],

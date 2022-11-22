@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerembas/screens/HomePage.dart';
+import 'package:kerembas/screens/Works.dart';
 import 'package:kerembas/screens/aboutPage.dart';
 import 'package:kerembas/screens/errorPage.dart';
 
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/about': (context) => AboutPage(),
+        '/works': (context) => WorksPage(),
       },
+      initialRoute: "/",
       onUnknownRoute: ((settings) => MaterialPageRoute(
             builder: (context) => ErrorPage(),
           )),

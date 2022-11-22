@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, sized_box_for_whitespace
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: textsize * 2),
+              padding: EdgeInsets.only(left: width / 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,11 +87,20 @@ class _HomePageState extends State<HomePage> {
                             selected1 = !selected1;
                           });
                         },
-                        child: Text(
-                          "Hello.",
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.anton(
-                              fontSize: textsize, color: Colors.white),
+                        child: AnimatedTextKit(
+                          totalRepeatCount: 1,
+                          isRepeatingAnimation: false,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              "Hello.",
+                              speed: const Duration(milliseconds: 100),
+                              textAlign: TextAlign.start,
+                              textStyle: GoogleFonts.anton(
+                                fontSize: textsize,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -113,7 +123,9 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: HoverWidget(
                         hoverChild: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, "/works");
+                          },
                           child: Text(
                             "Work",
                             textAlign: TextAlign.start,
@@ -126,11 +138,19 @@ class _HomePageState extends State<HomePage> {
                             selected2 = !selected2;
                           });
                         },
-                        child: Text(
-                          "I am",
-                          textAlign: TextAlign.start,
-                          style:
-                              GoogleFonts.anton(fontSize: textsize, color: red),
+                        child: AnimatedTextKit(
+                          totalRepeatCount: 1,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              "I am",
+                              speed: const Duration(milliseconds: 100),
+                              textAlign: TextAlign.start,
+                              textStyle: GoogleFonts.anton(
+                                fontSize: textsize,
+                                color: red,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -153,7 +173,9 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: HoverWidget(
                         hoverChild: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, "/about");
+                          },
                           child: Text(
                             "Contact",
                             textAlign: TextAlign.start,
@@ -166,11 +188,19 @@ class _HomePageState extends State<HomePage> {
                             selected2 = !selected2;
                           });
                         },
-                        child: Text(
-                          "Kerem",
-                          textAlign: TextAlign.start,
-                          style:
-                              GoogleFonts.anton(fontSize: textsize, color: red),
+                        child: AnimatedTextKit(
+                          totalRepeatCount: 1,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              "Kerem",
+                              speed: const Duration(milliseconds: 100),
+                              textAlign: TextAlign.start,
+                              textStyle: GoogleFonts.anton(
+                                fontSize: textsize,
+                                color: red,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
